@@ -1,13 +1,13 @@
-import Colas from "./colas.js";
-import Mmultiply from "./mmult.js";
+import Colas from "../scripts/colas.js";
+// import Mmultiply from "../scripts/mmult.js";
 class App {
   // ! hacer que el pinche wey sepa que elija un solo valor factor (ejemplo: horas, minutos o segundos)
-  constructor(A,S,max,min) {
-    this.btnCalcular = document.getElementById('btnMul');
+  constructor(A, S, max, min) {
+    this.btnCalcular = document.getElementById("btnMul");
     this.btnCalcular.addEventListener("click", this.cy);
     this.tipoDato = "horas";
-    this.maxColas =  min;
-    this.maxIterator =  max;
+    this.maxColas = min;
+    this.maxIterator = max;
     /// Tasa promedio de llegadas (por unidad de tiempo)
     this.A = A;
     /// Tasa promedio de servicio por servidor (por unidad de tiempo)
@@ -20,15 +20,15 @@ class App {
     console.log(this.S);
   }
   /// Colas multiples (por unidad de tiempo)
-  cy()  {
-      //TOMA DATOS HTML
-  console.log("hola");
-  let A = Number(document.getElementById('A').value);
-  let S = Number(document.getElementById('S').value);
-  let max = Number(document.getElementById('Max').value);
-  let min = Number(document.getElementById('Min').value);
-  let product = new App(A, S, max, min);
-  product.datos();
+  cy() {
+    //TOMA DATOS HTML
+    console.log("hola");
+    let A = Number(document.getElementById("A").value);
+    let S = Number(document.getElementById("S").value);
+    let max = Number(document.getElementById("Max").value);
+    let min = Number(document.getElementById("Min").value);
+    let product = new App(A, S, max, min);
+    product.datos();
   }
   usarColasMult() {
     var colas = new Colas();
