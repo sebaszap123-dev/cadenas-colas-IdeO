@@ -33,7 +33,7 @@
                       <a class="nav-link" href="markov.html">CADENAS DE MARKOV</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#">TEORIA DE COLAS <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled here" href="#">TEORIA DE COLAS <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active navButtom">
                       <a class="nav-link" href="simulacion.html">SIMULACIÓN</a>
@@ -47,13 +47,64 @@
         </div>
       </nav>
       <div class="container bodyInfo text-justify">
-        <h1 class="font-weight-bold text-center">CADENAS DE MARKOV</h1>
-        
+        <h1 class="font-weight-bold text-center">TEORIA DE COLAS</h1>
+
+        <div class="row">
+          <div class="col-md-5">
+            <button type="submit" class="btn btn-info btnMul disabled" onclick="ocultar1a1()" style="width: 100%; font-size: 22px;">Servidores Multiples</button>
+          </div>
+          <div class="col-md-5">
+            <button type="submit" class="btn btn-info btn1a1" onclick="ocultarMul()" style="width: 100%; font-size: 22px;">1 a 1 Probabilidad / Constantes</button>
+          </div>
+        </div>
+
+          <form class="formMul">
+            <div style="margin: 30px 0px 30px 0px; padding: 20px; border: rgb(202, 201, 214) 1px solid;">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="Tasa promedio de llegada">Tasa promedio de llegada</label>
+                  <input type="number" class="form-control" id="A" aria-describedby="AHelp" placeholder="Introduce el valor de A...">
+                  <label for="Tasa constante de servicio">Tasa constante de servicio</label>
+                  <input type="number" class="form-control" id="S" aria-describedby="SHelp" placeholder="Introduce el valor de S...">
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="Valor minimo del caso">Valor minimo del caso</label>
+                  <input type="number" class="form-control" id="Min" aria-describedby="MinHelp" placeholder="Introduce el valor...">
+                  <label for="Maximo de iteraciones">Maximo de iteraciones</label>
+                  <input type="number" class="form-control" id="Max" aria-describedby="MaxHelp" placeholder="Introduce el valor...">
+                </div>
+              </div>
+            </div>
+            
+          <button type="submit" class="btn btn-primary" id="btnMul" style="width: 100%; font-size: 22px;">Calcular</button>
+        </div>
+        </form>
+
+        <form class="form1a1">
+          <div style="margin: 30px 0px 30px 0px; padding: 20px; border: rgb(202, 201, 214) 1px solid;">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="tasa promedio de llegada">Tasa promedio de llegada</label>
+                  <input type="number" class="form-control" id="A" aria-describedby="AHelp" placeholder="Introduce el valor de A...">
+                  <label for="tasa promedio de llegada">Tasa constante de servicio</label>
+                  <input type="number" class="form-control" id="S" aria-describedby="SHelp" placeholder="Introduce el valor de S...">
+                </div>
+              </div>
+            </div>
+          <button type="submit" class="btn btn-primary" id="btn1a1" style="width: 100%; font-size: 22px;">Calcular</button>
+          </div>
+        </form>
       </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="./scripts/funtions.js"></script>
+        <script src="./scripts/main.js"></script>
   </body>
 </html>

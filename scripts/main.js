@@ -2,16 +2,34 @@ import Colas from "./colas.js";
 import Mmultiply from "./mmult.js";
 class App {
   // ! hacer que el pinche wey sepa que elija un solo valor factor (ejemplo: horas, minutos o segundos)
-  constructor() {
+  constructor(A,S,max,min) {
+    this.btnCalcular = document.getElementById('btnMul');
+    this.btnCalcular.addEventListener("click", this.cy);
     this.tipoDato = "horas";
-    this.maxColas = 2;
-    this.maxIterator = 10;
+    this.maxColas =  min;
+    this.maxIterator =  max;
     /// Tasa promedio de llegadas (por unidad de tiempo)
-    this.A = 2;
+    this.A = A;
     /// Tasa promedio de servicio por servidor (por unidad de tiempo)
-    this.S = 3;
+    this.S = S;
+  }
+  datos() {
+    console.log(this.maxColas);
+    console.log(this.tipoDato);
+    console.log(this.A);
+    console.log(this.S);
   }
   /// Colas multiples (por unidad de tiempo)
+  cy()  {
+      //TOMA DATOS HTML
+  console.log("hola");
+  let A = Number(document.getElementById('A').value);
+  let S = Number(document.getElementById('S').value);
+  let max = Number(document.getElementById('Max').value);
+  let min = Number(document.getElementById('Min').value);
+  let product = new App(A, S, max, min);
+  product.datos();
+  }
   usarColasMult() {
     var colas = new Colas();
     console.log(this.maxColas);
@@ -63,7 +81,7 @@ class App {
     console.log(colas.Utility(), this.tipoDato);
   }
 }
-
 var app = new App();
 app.usarColasProbability();
+
 // referencia : https://www.studocu.com/es-mx/document/instituto-tecnologico-de-delicias/taller-de-etica/ejemplo-1-de-teoria-de-colas-ejercicios-resueltos/18027831
