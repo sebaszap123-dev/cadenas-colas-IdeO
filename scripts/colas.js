@@ -59,50 +59,72 @@ export default class Colas {
     // mandarla a algun lugar
   }
   // ? ---------------- 1-1 servicios constantes end -----------------------
-
+  /// * ----------------- Utilización de la instalación U ------------------------
+  Utility() {
+    var result = this.A / this.S;
+    return result;
+  }
   // * ---------------- 1-1 Servidores (N=x)  -----------------------
-  LqServer() {
-    // poner función (llamar otras si es para 2 o 3 servidores)
-    if (N == 1) {
-      return;
-    } else if (N == 2) {
-      // hacer algo
-    } else if (N == 3) {
-      // hacer algo
+  LqNx() {
+    var result;
+    if (this.N == 2) {
+      result = this.LqW2();
+    } else if (this.N == 3) {
+      result = this.LqW3();
     } else {
-      // hacer algo
+      result = this.LqNxMultServ();
     }
-    this.Lqn = 30;
+    return result;
   }
   /// Longitud de colas N=x, x>1
   LqNxMultServ() {
     var powed = this.N + 1;
-    var P0;
-    var numerator = Math.pow(this.A / this.S, powed) * P0;
-    var denominator;
+    var p0 = this.P0();
+    var numerator = Math.pow(this.A / this.S, powed) * p0;
+    var denominator =
+      factorial(this.N - 1) * Math.pow(this.N - this.A / this.S, 2);
     var result = numerator / denominator;
     return result;
   }
-  /// ? Utilización de la instalación U
-  Utility() {
-    var result = this.A / this.S;
-    console.log(result);
+  sumatoriaForP0(i) {
+    var result = 1 / factorial(i);
+    return result;
+  }
+  P0() {
+    var s1 = 1 / factorial(this.N);
+    var s2 = Math.pow(this.A / this.S, this.N);
+    var s3 = (this.N * this.S) / (this.N * this.S - this.A);
+    var s4 = sumatoria(this.N, this.sumatoriaForP0) * (this.A / this.S);
+    var denominator = s1 * s2 * s3 + s4;
+    var result = 1 / denominator;
+    return result;
   }
 
-  /// Servidores (multiples N=2)
+  WqNx() {
+    var result = this.LqNx() / this.A;
+    return result;
+  }
+  LsNx() {
+    var result = this.LqNx() + this.A * this.S;
+    return result;
+  }
+  WsNx() {
+    var result = this.LqNx() / this.A;
+    return result;
+  }
+  UtilityNx() {
+    var result = this.A / (this.N * this.S);
+    return result;
+  }
+
+  /// * Servidores (multiples N=2)
   LqW2() {
     var first = Math.pow(this.A / this.S, 3);
     var second = 4 - Math.pow(this.A / this.S, 2);
     var result = first / second;
     return result;
   }
-  WsW2() {
-    var result = this.LqW2() / this.A;
-    result = Number.parseFloat(result.toFixed(4));
-    console.log(result);
-    return result;
-  }
-  /// Servidores (multiples N=3)
+  /// * Servidores (multiples N=3)
   LqW3() {
     var first = Math.pow(this.A / this.S, 4);
     var second;
@@ -111,14 +133,22 @@ export default class Colas {
     var s3 = Math.pow(this.A / this.S, 2);
     second = s1 * (s2 + s3);
     var result = first / second;
-    console.log(result);
+    return result;
   }
+  // * ---------------- 1-1 Servidores (N=x) end -----------------------
 }
 
 function factorial(n) {
   var total = 1;
-  for (i = 1; i <= n; i++) {
+  for (let i = 1; i <= n; i++) {
     total = total * i;
   }
   return total;
+}
+function sumatoria(n, f) {
+  var sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += f(i);
+  }
+  return sum;
 }

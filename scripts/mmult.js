@@ -36,3 +36,14 @@ export default class Mmultiply {
     this.display(this.multiply(this.a, this.b));
   }
 }
+// referencia para las matrices
+// var a = [
+//   [0.6, 0.2, 0.2],
+//   [0.3, 0.5, 0.2],
+//   [0.3, 0.3, 0.4],
+// ],
+// b = [
+//   [0.6, 0.2, 0.2],
+//   [0.3, 0.5, 0.2],
+//   [0.3, 0.3, 0.4],
+// ];
