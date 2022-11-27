@@ -1,7 +1,6 @@
 /* <------------NAVBAR------------> */
 .navbar{
     padding: 0 !important;
-    height: 50px;
 }
 .logo{
     width: 40px;
@@ -52,7 +51,7 @@ body{
 .imgBody{
     display: block;
     margin: auto;
-    width: 600px;
+    width: 60%;
 }
 /* <------------CONTACTOS------------> */
 .perfil {

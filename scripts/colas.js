@@ -43,12 +43,14 @@ export default class Colas {
   }
   ServiciosWq() {
     var result = this.A / this.denominatorConstServ;
+    return result;
   }
   /// Longitud promedio del sistema
   ServiciosLs() {
     var result;
     result = (this.A * (2 * this.S - this.A)) / this.denominatorConstServ;
     console.log(result);
+    return result;
     // mandarla a algun lugar
   }
   /// Tiempo espera promedio del sistema
@@ -56,6 +58,7 @@ export default class Colas {
     var result;
     result = (this.S * 2 - this.A) / this.denominatorConstServ;
     console.log(result);
+    return result;
     // mandarla a algun lugar
   }
   // ? ---------------- 1-1 servicios constantes end -----------------------

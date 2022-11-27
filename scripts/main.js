@@ -3,8 +3,10 @@ import Mmultiply from "./mmult.js";
 class App {
   // ! hacer que el pinche wey sepa que elija un solo valor factor (ejemplo: horas, minutos o segundos)
   constructor(A,S,max,min) {
-    this.btnCalcular = document.getElementById('btnMul');
-    this.btnCalcular.addEventListener("click", this.cy);
+    this.btnCalMul = document.getElementById('btnMul');
+    this.btnCalMul.addEventListener("click", this.btnMul);
+    this.btnCal1a1 = document.getElementById('btn1a1');
+    this.btnCal1a1.addEventListener("click", this.btn1a1);
     this.tipoDato = "horas";
     this.maxColas =  min;
     this.maxIterator =  max;
@@ -13,22 +15,30 @@ class App {
     /// Tasa promedio de servicio por servidor (por unidad de tiempo)
     this.S = S;
   }
-  datos() {
-    console.log(this.maxColas);
-    console.log(this.tipoDato);
-    console.log(this.A);
-    console.log(this.S);
-  }
   /// Colas multiples (por unidad de tiempo)
-  cy()  {
+  btnMul = () => {
       //TOMA DATOS HTML
-  console.log("hola");
-  let A = Number(document.getElementById('A').value);
-  let S = Number(document.getElementById('S').value);
-  let max = Number(document.getElementById('Max').value);
-  let min = Number(document.getElementById('Min').value);
-  let product = new App(A, S, max, min);
-  product.datos();
+    console.log("hola");
+    let A = Number(document.getElementById('A').value);
+    let S = Number(document.getElementById('S').value);
+    let max = Number(document.getElementById('Max').value);
+    let min = Number(document.getElementById('Min').value);
+    let product = new App(A, S, max, min);
+    product.usarColasMult();
+    document.getElementById("A").value = "";
+    document.getElementById("S").value = "";
+    document.getElementById("Max").value = "";
+    document.getElementById("Min").value = "";
+  }
+  btn1a1 = () => {
+      //TOMA DATOS HTML
+    console.log("hola");
+    let A = Number(document.getElementById('A2').value);
+    let S = Number(document.getElementById('S2').value);
+    let product = new App(A, S);
+    console.log(A,S);
+    product.usarColasProbability();
+    product.usarColasServiciosConstants();
   }
   usarColasMult() {
     var colas = new Colas();
@@ -46,42 +56,48 @@ class App {
         }
       }
     }
-    console.log(colas.LqNx());
-    console.log(colas.WqNx());
-    console.log(colas.LsNx());
-    console.log(colas.WsNx());
-    console.log(colas.UtilityNx());
+    var Lq = colas.LqNx();
+    var Wq = colas.WqNx();
+    var Ls = colas.LsNx();
+    var Ws = colas.WsNx();
+    var utility = colas.UtilityNx();
+
+    var res = document.querySelector(".res");
+    res.style.display = "block";
+    let details=document.getElementById('details');
+    details.innerHTML = `<b>Lq = </b> ${Lq}.<br><b>Wq = </b>${Wq}.<br><b>Ls =</b> ${Ls}.<br><b>Ws = </b>${Ws}.<br><b>Utilidad = </b>${utility}.<br>`;
   }
   /// Colas 1-1 probability
   usarColasProbability() {
     var colas = new Colas(this.A, this.S);
-    console.log("Lq");
-    console.log(colas.ProbabilityLq(), this.tipoDato);
-    console.log("Wq");
-    console.log(colas.ProbabilityWq(), this.tipoDato);
-    console.log("Ls");
-    console.log(colas.ProbabilityLs(), this.tipoDato);
-    console.log("Ws");
-    console.log(colas.ProbabilityWs(), this.tipoDato);
-    console.log("Utility");
-    console.log(colas.Utility(), this.tipoDato);
+    var Lq =(colas.ProbabilityLq());
+    var Wq =(colas.ProbabilityWq());
+    var Ls =(colas.ProbabilityLs());
+    var Ws =(colas.ProbabilityWs());
+    var utility =(colas.Utility());
+
+    var res = document.querySelector(".res");
+    res.style.display = "block";
+    let details=document.getElementById('details');
+    details.innerHTML = `<b>Probabilidad:</b><br><b>Lq = </b> ${Lq}.<br><b>Wq = </b>${Wq}.<br><b>Ls =</b> ${Ls}.<br><b>Ws = </b>${Ws}.<br><b>Utilidad = </b>${utility}.<br>`;
   }
   /// Colas 1-1 servicios constantes
   usarColasServiciosConstants() {
     var colas = new Colas(this.A, this.S);
-    console.log("Lq");
-    console.log(colas.ServiciosLq(), this.tipoDato);
-    console.log("Wq");
-    console.log(colas.ServiciosWq(), this.tipoDato);
-    console.log("Ls");
-    console.log(colas.ServiciosLs(), this.tipoDato);
-    console.log("Ws");
-    console.log(colas.ServiciosWs(), this.tipoDato);
-    console.log("Utility");
-    console.log(colas.Utility(), this.tipoDato);
+    var Lq = (colas.ServiciosLq());
+    var Wq = (colas.ServiciosWq());
+    var Ls = (colas.ServiciosLs());
+    var Ws = (colas.ServiciosWs());
+    var utility = (colas.Utility());
+
+    var res = document.querySelector(".res");
+    res.style.display = "block";
+    let details=document.getElementById('details2');
+    details.innerHTML = `<b>Servicios Constantes:</b><br><b>Lq = </b> ${Lq}.<br><b>Wq = </b>${Wq}.<br><b>Ls =</b> ${Ls}.<br><b>Ws = </b>${Ws}.<br><b>Utilidad = </b>${utility}.<br>`;
   }
 }
 var app = new App();
-app.usarColasProbability();
+
+//app.usarColasProbability();
 
 // referencia : https://www.studocu.com/es-mx/document/instituto-tecnologico-de-delicias/taller-de-etica/ejemplo-1-de-teoria-de-colas-ejercicios-resueltos/18027831
