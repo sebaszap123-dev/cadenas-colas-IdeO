@@ -1,0 +1,71 @@
+/* <------------NAVBAR------------> */
+.navbar{
+    padding: 0 !important;
+}
+.logo{
+    width: 40px;
+}
+.nav-link{
+    font-size: 15px;
+    margin: 0px 5px 0px 5px !important;
+    padding: 12px 30px 12px 30px !important;
+    border-bottom: #910606 0px solid;
+    color: #928d8d !important;
+    transition: all .2s;
+}
+.here{
+    border-bottom: #D00505 4px solid;
+    color: #D00505 !important;
+    font-weight: bold;
+}
+.nav-link:hover{
+    border-bottom: #D00505 4px solid;
+    font-weight: bold;
+    color: #D00505 !important;
+}
+@media (max-width: 1300px) {
+    .nav-link{
+        padding: 10px 20px 10px 20px !important;
+    }
+}
+@media (max-width: 1000px) {
+    .nav-link{
+        width: 100% !important;
+    }
+    .navbar-nav{
+        width: 100% !important;
+        text-align: center;
+    }
+}
+/* <------------NAVBAR------------> */
+body{
+    background-color: rgb(227, 227, 231) !important;
+    margin-top: 70px !important;
+}
+.bodyInfo{
+    background-color: white;
+    padding: 2% 7% 2% 7% !important;
+    font-size: 130% !important;
+    border-radius: 10px !important;
+}
+.imgBody{
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+/* <------------CONTACTOS------------> */
+.perfil {
+    border: rgb(22, 22, 23) 1px solid  !important;
+	width: 40%  !important;
+    border-radius: 100px;
+}
+.infoCard{
+    font-size: 16px !important;
+}
+/* <------------COLAS------------> */
+.formMultiples{
+    display: block;
+}
+.form1a1{
+    display: none;
+}
