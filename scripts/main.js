@@ -1,5 +1,5 @@
-import Colas from "../scripts/colas.js";
-// import Mmultiply from "../scripts/mmult.js";
+import Colas from "./colas.js";
+import Mmultiply from "./mmult.js";
 class App {
   // ! hacer que el pinche wey sepa que elija un solo valor factor (ejemplo: horas, minutos o segundos)
   constructor(A,S,max,min) {
@@ -8,8 +8,8 @@ class App {
     this.btnCal1a1 = document.getElementById('btn1a1');
     this.btnCal1a1.addEventListener("click", this.btn1a1);
     this.tipoDato = "horas";
-    this.maxColas = min;
-    this.maxIterator = max;
+    this.maxColas =  min;
+    this.maxIterator =  max;
     /// Tasa promedio de llegadas (por unidad de tiempo)
     this.A = A;
     /// Tasa promedio de servicio por servidor (por unidad de tiempo)
